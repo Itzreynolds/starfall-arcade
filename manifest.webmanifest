@@ -1,16 +1,10 @@
 {
   "name": "Starfall Arcade",
-  "short_name": "Starfall Arcade",
+  "short_name": "Starfall",
+  "description": "A universe of browser games.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#070912",
+  "background_color": "#080a12",
   "theme_color": "#080a12",
-  "description": "A universe of browser games.",
-  "icons": [
-    {
-      "src": "assets/brand/favicon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "icons": []
 }

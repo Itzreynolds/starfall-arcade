@@ -1,0 +1,7 @@
+STARFALL ARCADE VERSION 1 PLATFORM
+
+1. Upload this entire folder to the starfall-arcade repository.
+2. Public website will work immediately.
+3. Open docs/SETUP.md to activate accounts, cloud saves, staff tools, mail, Stripe, and Premium.
+4. Do NOT paste secret/service keys into frontend JavaScript.
+5. Stable Empire itself is untouched and remains Version 1.

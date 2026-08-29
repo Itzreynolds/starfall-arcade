@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://itzreynolds.github.io/starfall-arcade/</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/games.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/games/stable-empire.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/profile.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/achievements.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/leaderboards.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/updates.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/roadmap.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/community.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/support.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/about.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/news/starfall-arcade-version-1.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/news/stable-empire-version-1.html</loc></url>
-<url><loc>https://itzreynolds.github.io/starfall-arcade/news/community-roadmap.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/index.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/games.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/login.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/dashboard.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/profile.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/achievements.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/inbox.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/premium.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/community.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/roadmap.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/privacy.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/terms.html</loc></url>
+  <url><loc>https://itzreynolds.github.io/starfall-arcade/refund-policy.html</loc></url>
 </urlset>

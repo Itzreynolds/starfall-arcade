@@ -1,35 +1,74 @@
-# Starfall Arcade — Version 1 Full Website Update
+# Starfall Arcade — Version 1 Platform
 
-This is the full Version 1 Starfall Arcade hub update. **Keep the public version at Version 1 unless an explicit version change is decided later.**
+This is the full **Starfall Arcade Version 1** platform foundation.
 
-## Major features
-- Premium Stable Empire Version 1 cover and release page
-- Searchable game library
-- Browser-local player profiles
-- Browser-local achievements and arcade points
-- Continue Playing / recent launch tracking
-- Recent local hub activity
-- Updates/news system
-- Public roadmap
-- Community hub prepared for Discord
-- Future leaderboards page with no fake rankings
-- Supporter-program planning page
-- SEO/social sharing metadata
-- sitemap, robots.txt, manifest, custom 404
-- Mobile navigation and accessibility improvements
+It upgrades the site from a static game hub into an account-ready architecture with:
 
-## Important profile limitation
-The Version 1 player profile is **local to the current browser/device**. It is not authentication and does not sync online. Real accounts require a backend and are listed on the roadmap.
+- player registration and login
+- password reset
+- player profiles and avatars
+- My Arcade dashboard
+- recent activity
+- achievements and Arcade XP
+- cloud-save tables
+- rolling save backups
+- Starfall Inbox
+- queued announcement email delivery
+- Premium/store architecture
+- Stripe Checkout + webhook functions
+- account entitlements
+- subscription records
+- Owner/Staff Control Center
+- user search
+- moderation
+- manual entitlement grants
+- staff roles and permissions
+- analytics overview
+- announcements
+- audit logs
+- game integration SDK
+- Privacy / Terms / Refund starter pages
 
-## Stable Empire save safety
-The Starfall Arcade hub does not read or modify Stable Empire save data. It only stores local hub activity such as the last game link launched.
+## Public version
 
-## Discord
-Edit `site-config.js` and set:
-```js
-discord: "https://discord.gg/YOUR-INVITE"
-```
-All Discord buttons then point to the same invite.
+Starfall Arcade is **Version 1**.
 
-## Upload to GitHub
-Upload the contents of this folder to the root of `Itzreynolds/starfall-arcade`, replacing older site files when GitHub prompts. Commit directly to `main`. GitHub Pages should redeploy automatically.
+Stable Empire is **Version 1**.
+
+Nothing in this package changes Stable Empire itself.
+
+## Upload
+
+Upload the contents of this folder to the root of:
+
+`Itzreynolds/starfall-arcade`
+
+GitHub Pages can continue deploying from `main` → `/(root)`.
+
+## Required next step
+
+Read:
+
+`docs/SETUP.md`
+
+The frontend is upload-ready, but real accounts and backend operations require a Supabase project.
+
+## Backend
+
+Database schema:
+
+`supabase/migrations/001_starfall_platform.sql`
+
+Owner bootstrap:
+
+`supabase/migrations/002_bootstrap_owner.sql`
+
+Edge Functions:
+
+`supabase/functions/`
+
+## Stable Empire
+
+Integration instructions are included but are intentionally not applied:
+
+`docs/STABLE-EMPIRE-INTEGRATION.md`

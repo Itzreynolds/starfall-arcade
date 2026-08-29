@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a12">
+<meta name="description" content="Starfall Arcade — a universe of browser games.">
+<meta property="og:title" content="Sign In — Starfall Arcade">
+<meta property="og:description" content="Starfall Arcade — a universe of browser games.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://itzreynolds.github.io/starfall-arcade/assets/img/stable-empire-cover.png">
+<title>Sign In — Starfall Arcade</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+
+<div class="star-layer"></div>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">★</span>
+    <span><strong>Starfall Arcade</strong><small>A universe of browser games.</small></span>
+  </a>
+  <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle navigation">☰</button>
+  <nav class="main-nav" data-nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="premium.html">Premium</a>
+    <a href="community.html">Community</a>
+    <a href="roadmap.html">Roadmap</a>
+    <span class="auth-slot" data-auth-slot></span>
+  </nav>
+</header>
+
+<div class="notice warning setup-banner" data-backend-banner hidden>
+  <strong>Platform setup pending.</strong> The public site works now, but accounts, cloud saves, staff tools, purchases, and mail activate after Supabase is connected using <code>docs/SETUP.md</code>.
+</div>
+<main>
+<div class="auth-wrap">
+  <aside class="auth-side"><div class="eyebrow">STARFALL ACCOUNT</div><h1>One account. Every world.</h1><p class="lead">Your Starfall account is designed to carry progress, achievements, owned content, premium access, recent activity, and messages between games.</p><ul class="feature-list"><li>Cloud save architecture</li><li>Unified achievements and Arcade XP</li><li>Starfall Inbox and announcements</li><li>Purchase and entitlement history</li><li>Premium membership status</li><li>Future cross-game player identity</li></ul></aside>
+  <section class="auth-card">
+    <div class="auth-tabs"><button class="active" type="button" data-auth-tab="login">Sign in</button><button type="button" data-auth-tab="signup">Create account</button></div>
+    <div class="notice" data-auth-status hidden></div>
+    <div data-auth-pane="login">
+      <form id="loginForm" class="form-grid">
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
+        <button class="button primary" type="submit">Sign in to Starfall</button>
+        <a href="#" data-show-forgot style="color:var(--accent2);font-size:.8rem">Forgot password?</a>
+      </form>
+    </div>
+    <div data-auth-pane="signup" hidden>
+      <form id="signupForm" class="form-grid">
+        <div class="form-row"><label>Display name<input name="display_name" maxlength="60" required></label><label>Handle<input name="handle" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" placeholder="StarRider" required></label></div>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Password<input type="password" name="password" minlength="8" required autocomplete="new-password"></label>
+        <label class="check"><input type="checkbox" name="marketing" checked><span>Email me optional game announcements, releases, and Starfall news. I can change this later.</span></label>
+        <label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="terms.html" style="color:var(--accent2)">Terms</a> and <a href="privacy.html" style="color:var(--accent2)">Privacy Policy</a>.</span></label>
+        <button class="button primary" type="submit">Create Starfall Account</button>
+      </form>
+    </div>
+    <div data-auth-pane="forgot" hidden>
+      <form id="forgotForm" class="form-grid"><h2 style="margin:.2rem 0">Reset password</h2><p style="color:var(--muted)">Enter your account email and we will send a secure reset link.</p><label>Email<input type="email" name="email" required></label><button class="button primary" type="submit">Send reset link</button></form>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div><strong>Starfall Arcade</strong><span>A universe of browser games.</span></div>
+  <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund-policy.html">Refunds</a><a href="staff/index.html">Staff</a></nav>
+  <small>© <span data-year></span> Starfall Arcade • <span data-site-version></span>. Payments are processed by third-party providers when enabled.</small>
+</footer>
+
+<script type="module" src="assets/js/site.js"></script>
+<script type="module" src="assets/js/auth.js"></script>
+</body></html>
