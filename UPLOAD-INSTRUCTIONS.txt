@@ -1,11 +1,12 @@
-STARFALL ARCADE WEBSITE UPDATE
+STARFALL ARCADE VERSION 1 FULL UPDATE
 
-1. Open your GitHub repository: Itzreynolds/starfall-arcade
-2. Add file -> Upload files.
-3. Upload the CONTENTS of this folder, including the games/, news/, and assets/ folders.
-4. If GitHub warns about replacing existing index.html, styles.css, app.js, site-config.js, or README.md, allow the new versions to replace them.
-5. Commit directly to main with a message such as:
-   Upgrade Starfall Arcade website
-6. GitHub Pages should redeploy automatically.
+1. Extract this ZIP.
+2. Open Itzreynolds/starfall-arcade on GitHub.
+3. Add file > Upload files.
+4. Drag EVERYTHING INSIDE this folder, including assets, games, and news.
+5. Allow matching files to replace the older website versions.
+6. Commit directly to main.
+7. Suggested commit: Expand Starfall Arcade Version 1 platform
+8. Wait for GitHub Pages to redeploy.
 
-Do not upload the ZIP itself as the website. Extract it first and upload the files/folders inside it.
+Stable Empire itself is not modified by this package.

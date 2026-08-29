@@ -1,142 +1,44 @@
 (() => {
-  const config = window.STARFALL_CONFIG || {};
-  const games = config.games || [];
-  const updates = config.updates || [];
-  const roadmap = config.roadmap || [];
-  const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const c=window.STARFALL_CONFIG||{}, games=c.games||[], updates=c.updates||[], roadmap=c.roadmap||[], defs=c.achievements||[];
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const keys=c.storage||{profile:'starfallArcadeProfile_v1',achievements:'starfallArcadeAchievements_v1',activity:'starfallArcadeActivity_v1',lastGame:'starfallArcadeLastGame_v1'};
+  const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+  const read=(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch{return f}};
+  const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+  const nowLabel=()=>new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
 
-  const escapeHtml = (value) => String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  function setupStars(){const l=$('#stars');if(!l)return;const n=Math.min(95,Math.max(44,Math.floor(innerWidth/16))),f=document.createDocumentFragment();for(let i=0;i<n;i++){const x=document.createElement('i'),z=(Math.random()*2.2+.7).toFixed(2);x.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;animation-delay:${Math.random()*5}s;opacity:${.2+Math.random()*.72}`;f.append(x)}l.replaceChildren(f)}
+  function setupNav(){const b=$('#navToggle'),n=$('#mainNav');if(!b||!n)return;b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});n.addEventListener('click',e=>{if(e.target.closest('a'))n.classList.remove('open')})}
+  function activeNav(){const p=document.body.dataset.page;if(!p)return;$$('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===p))}
+  function setupDiscord(){const d=c.links?.discord?.trim();$$('[data-link="discord"]').forEach(a=>{if(d){a.href=d;a.target='_blank';a.rel='noreferrer';a.classList.remove('disabled-link');a.removeAttribute('aria-disabled')}else{a.classList.add('disabled-link');a.setAttribute('aria-disabled','true');a.title='Discord invite has not been added yet.'}})}
 
-  function setupStars() {
-    const layer = $("#stars");
-    if (!layer) return;
-    const count = Math.min(95, Math.max(44, Math.floor(innerWidth / 16)));
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      const star = document.createElement("i");
-      const size = (Math.random() * 2.2 + .7).toFixed(2);
-      star.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;animation-delay:${Math.random()*5}s;opacity:${.2+Math.random()*.72}`;
-      frag.append(star);
-    }
-    layer.replaceChildren(frag);
+  function getUnlocked(){return read(keys.achievements,[])}
+  function addActivity(type,label,href=''){let a=read(keys.activity,[]);a.unshift({type,label,href,at:Date.now(),when:nowLabel()});a=a.slice(0,12);write(keys.activity,a);renderActivity()}
+  function unlock(id,silent=false){const d=defs.find(x=>x.id===id);if(!d)return;const u=getUnlocked();if(u.includes(id))return;u.push(id);write(keys.achievements,u);if(!silent){toast(`${d.icon} Achievement unlocked`,d.title);addActivity('achievement',`Unlocked ${d.title}`)}renderAchievementBits()}
+  function toast(title,text){let t=$('#starfallToast');if(!t){t=document.createElement('div');t.id='starfallToast';t.className='toast';document.body.append(t)}t.innerHTML=`<strong>${esc(title)}</strong><span>${esc(text)}</span>`;t.classList.add('show');clearTimeout(window.__sfToast);window.__sfToast=setTimeout(()=>t.classList.remove('show'),3500)}
+  function trackPage(){const p=document.body.dataset.page;unlock('first-visit',true);const map={games:'library-explorer','stable-empire':'stable-scout',updates:'news-reader',roadmap:'roadmap-scout',community:'community-curious'};if(map[p])unlock(map[p],true)}
+
+  function gameCard(g){const live=g.status==='live',art=g.cover?`<img src="${esc(g.cover)}" alt="${esc(g.title)} cover artwork" loading="lazy">`:`<div class="locked-art"><span class="locked-star">✦</span><span class="signal-line"></span><span class="signal-line short"></span></div>`;return `<article class="game-card ${live?'':'locked'}" data-genres="${esc((g.genres||[]).join('|'))}"><div class="game-card-art">${art}<span class="status-pill ${live?'live':'locked'}">${live?'LIVE':'LOCKED'}</span></div><div class="game-card-body"><div class="tag-row">${(g.genres||[]).slice(0,4).map(x=>`<span>${esc(x)}</span>`).join('')}</div><div class="title-row"><h3>${esc(g.title)}</h3>${g.version?`<b>${esc(g.version)}</b>`:''}</div><p class="game-tagline">${esc(g.tagline)}</p><p>${esc(g.description)}</p><div class="game-card-footer"><small>${esc(g.release||'')}</small><div>${g.page?`<a class="text-link" href="${esc(g.page)}">Details</a>`:''}${g.play?`<a class="button tiny primary" data-track-play="${esc(g.id)}" target="_blank" rel="noreferrer" href="${esc(g.play)}">Play</a>`:`<span class="locked-label">Reveal later</span>`}</div></div></div></article>`}
+  function renderGames(){const t=$('#gameGrid');if(!t)return;const f=$('#gameFilters'),s=$('#gameSearch'),cats=['All',...new Set(games.flatMap(g=>g.genres||[]))];if(f)f.innerHTML=cats.map((x,i)=>`<button class="filter-button ${i===0?'active':''}" data-filter="${esc(x)}">${esc(x)}</button>`).join('');const apply=()=>{const a=$('.filter-button.active',f)?.dataset.filter||'All',q=(s?.value||'').trim().toLowerCase(),list=games.filter(g=>(a==='All'||(g.genres||[]).includes(a))&&(!q||[g.title,g.tagline,g.description,...(g.genres||[])].join(' ').toLowerCase().includes(q)));t.innerHTML=list.length?list.map(gameCard).join(''):`<div class="empty-state"><strong>No games found.</strong><span>Try another filter or search.</span></div>`;bindPlay()};f?.addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;$$('.filter-button',f).forEach(x=>x.classList.remove('active'));b.classList.add('active');apply()});s?.addEventListener('input',apply);apply()}
+  function updateCard(x){return `<article class="news-card"><div class="news-meta"><span>${esc(x.date)}</span><span>${esc(x.game)}</span><span>${esc(x.type)}</span></div><h3>${esc(x.title)}</h3><p>${esc(x.excerpt)}</p><a class="text-link" href="${esc(x.url)}">Read update →</a></article>`}
+  function renderUpdates(){$$('[data-updates]').forEach(t=>{const l=Number(t.dataset.limit||updates.length);t.innerHTML=updates.slice(0,l).map(updateCard).join('')})}
+  function renderRoadmap(){const t=$('#roadmapList');if(t)t.innerHTML=roadmap.map(x=>`<article class="roadmap-item ${esc(x.status)}"><div class="roadmap-number">${esc(x.phase)}</div><div><div class="roadmap-top"><h3>${esc(x.title)}</h3><span>${esc(x.status)}</span></div><p>${esc(x.text)}</p></div></article>`).join('')}
+
+  function bindPlay(){$$('[data-track-play]').forEach(a=>{if(a.dataset.bound)return;a.dataset.bound='1';a.addEventListener('click',()=>{const id=a.dataset.trackPlay,g=games.find(x=>x.id===id);write(keys.lastGame,{id,title:g?.title||id,url:a.href,at:Date.now(),when:nowLabel()});addActivity('play',`Launched ${g?.title||id}`,a.href);if(id==='stable-empire')unlock('stable-launch')})})}
+  function renderContinue(){const t=$('[data-continue]');if(!t)return;const g=read(keys.lastGame,null);if(!g){t.innerHTML=`<div class="empty-mini"><strong>No recent game yet.</strong><span>Launch Stable Empire and it will appear here.</span></div>`;return}t.innerHTML=`<div class="continue-card"><div><small>LAST LAUNCHED • ${esc(g.when||'')}</small><strong>${esc(g.title)}</strong><span>Starfall Arcade remembers launches on this browser only.</span></div><a class="button primary" data-track-play="${esc(g.id)}" target="_blank" rel="noreferrer" href="${esc(g.url)}">Continue Playing</a></div>`;bindPlay()}
+
+  function avatarMarkup(p,size='large'){const n=(p?.name||'Player').trim(),initials=n.split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||'').join('')||'P',style=Number(p?.avatarStyle||0)%6;return `<span class="avatar avatar-${style} ${size}">${esc(initials)}</span>`}
+  function getProfile(){return read(keys.profile,null)}
+  function profileScore(){const u=getUnlocked();return defs.filter(d=>u.includes(d.id)).reduce((s,d)=>s+(d.points||0),0)}
+  function renderProfileBits(){const p=getProfile(),name=p?.name||'Guest Player';$$('[data-profile-name]').forEach(x=>x.textContent=name);$$('[data-profile-avatar]').forEach(x=>x.innerHTML=avatarMarkup(p,'small'));const badge=$('[data-profile-badge]');if(badge)badge.textContent=p?'Local profile':'Create profile';const hero=$('#profileHero');if(hero){hero.innerHTML=p?`<div class="profile-hero-card">${avatarMarkup(p)}<div><div class="eyebrow">LOCAL PLAYER PROFILE</div><h1>${esc(p.name)}</h1><p>${esc(p.bio||'Your place in the Starfall Arcade universe.')}</p><div class="profile-meta"><span>Joined ${esc(p.joinedLabel||'this browser')}</span><span>Favorite: ${esc(p.favorite||'Stable Empire')}</span><span>${getUnlocked().length}/${defs.length} achievements</span><span>${profileScore()} points</span></div></div></div>`:`<div class="profile-hero-card"><span class="avatar avatar-0 large">?</span><div><div class="eyebrow">LOCAL PLAYER PROFILE</div><h1>Create your arcade identity.</h1><p>Your Version 1 profile is stored only in this browser. Real accounts and cloud sync are planned for a later backend phase.</p></div></div>`}
+    const form=$('#profileForm');if(form){form.elements.name.value=p?.name||'';form.elements.bio.value=p?.bio||'';form.elements.favorite.value=p?.favorite||'Stable Empire';form.elements.avatarStyle.value=String(p?.avatarStyle||0)}
   }
+  function setupProfileForm(){const f=$('#profileForm');if(!f)return;f.addEventListener('submit',e=>{e.preventDefault();const old=getProfile(),fd=new FormData(f),name=String(fd.get('name')||'').trim().slice(0,28);if(!name){toast('Profile needs a name','Enter a display name first.');return}const p={name,bio:String(fd.get('bio')||'').trim().slice(0,180),favorite:String(fd.get('favorite')||'Stable Empire'),avatarStyle:Number(fd.get('avatarStyle')||0),joined:old?.joined||Date.now(),joinedLabel:old?.joinedLabel||new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',year:'numeric'}).format(new Date())};write(keys.profile,p);addActivity('profile',old?'Updated local profile':'Created local profile');unlock('profile-created');renderProfileBits();toast('Profile saved',`${name} is ready for the arcade.`)});$('#resetProfile')?.addEventListener('click',()=>{if(!confirm('Delete the local Starfall Arcade profile and local hub activity on this browser? Stable Empire game saves are NOT affected.'))return;localStorage.removeItem(keys.profile);localStorage.removeItem(keys.activity);localStorage.removeItem(keys.lastGame);renderProfileBits();renderActivity();renderContinue();toast('Local profile cleared','Stable Empire saves were not touched.')})}
+  function renderAchievementBits(){const u=getUnlocked();$$('[data-achievement-count]').forEach(x=>x.textContent=`${u.length}/${defs.length}`);$$('[data-achievement-points]').forEach(x=>x.textContent=profileScore());const t=$('#achievementGrid');if(t)t.innerHTML=defs.map(d=>{const on=u.includes(d.id);return `<article class="achievement-card ${on?'unlocked':'locked'}"><span class="achievement-icon">${esc(d.icon)}</span><div><div class="achievement-top"><h3>${esc(d.title)}</h3><b>${d.points} pts</b></div><p>${esc(d.description)}</p><small>${on?'UNLOCKED':'LOCKED'}</small></div></article>`}).join('');const mini=$('#achievementMini');if(mini){const unlocked=defs.filter(d=>u.includes(d.id)).slice(-4).reverse();mini.innerHTML=unlocked.length?unlocked.map(d=>`<div class="mini-achievement"><span>${esc(d.icon)}</span><div><strong>${esc(d.title)}</strong><small>${d.points} pts</small></div></div>`).join(''):`<div class="empty-mini"><strong>No achievements yet.</strong><span>Explore the site to start unlocking them.</span></div>`}}
+  function renderActivity(){const t=$('#activityList');if(!t)return;const a=read(keys.activity,[]);t.innerHTML=a.length?a.map(x=>`<div class="activity-row"><span>${x.type==='play'?'▶':x.type==='achievement'?'★':x.type==='profile'?'👤':'•'}</span><div><strong>${esc(x.label)}</strong><small>${esc(x.when||'')}</small></div></div>`).join(''):`<div class="empty-mini"><strong>No recent activity.</strong><span>Game launches and local profile activity will appear here.</span></div>`}
+  function renderDashboard(){renderProfileBits();renderContinue();renderAchievementBits();renderActivity();const p=getProfile();const welcome=$('#dashboardWelcome');if(welcome)welcome.textContent=p?`Welcome back, ${p.name}.`:'Welcome to your player dashboard.'}
 
-  function setupNav() {
-    const button = $("#navToggle");
-    const nav = $("#mainNav");
-    if (!button || !nav) return;
-    button.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      button.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    nav.addEventListener("click", e => {
-      if (e.target.closest("a")) nav.classList.remove("open");
-    });
-  }
-
-  function setupExternalLinks() {
-    const discord = config.links?.discord?.trim();
-    $$('[data-link="discord"]').forEach(link => {
-      if (discord) {
-        link.href = discord;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        link.classList.remove("disabled-link");
-        link.removeAttribute("aria-disabled");
-      } else {
-        link.href = "community.html";
-        link.classList.add("disabled-link");
-        link.setAttribute("aria-disabled", "true");
-        link.title = "Discord invite will be added here when the community server is ready.";
-      }
-    });
-  }
-
-  function gameCard(game) {
-    const live = game.status === "live";
-    const art = game.cover
-      ? `<img src="${escapeHtml(game.cover)}" alt="${escapeHtml(game.title)} cover artwork" loading="lazy">`
-      : `<div class="locked-art"><span class="locked-star">✦</span><span class="signal-line"></span><span class="signal-line short"></span></div>`;
-    const status = live ? "LIVE" : "LOCKED";
-    return `<article class="game-card ${live ? "" : "locked"}" data-genres="${escapeHtml((game.genres||[]).join('|'))}">
-      <div class="game-card-art">${art}<span class="status-pill ${live ? "live" : "locked"}">${status}</span></div>
-      <div class="game-card-body">
-        <div class="tag-row">${(game.genres||[]).slice(0,4).map(g => `<span>${escapeHtml(g)}</span>`).join("")}</div>
-        <div class="title-row"><h3>${escapeHtml(game.title)}</h3>${game.version ? `<b>${escapeHtml(game.version)}</b>` : ""}</div>
-        <p class="game-tagline">${escapeHtml(game.tagline)}</p>
-        <p>${escapeHtml(game.description)}</p>
-        <div class="game-card-footer"><small>${escapeHtml(game.release || "")}</small><div>${game.page ? `<a class="text-link" href="${escapeHtml(game.page)}">Details</a>` : ""}${game.play ? `<a class="button tiny primary" target="_blank" rel="noreferrer" href="${escapeHtml(game.play)}">Play</a>` : `<span class="locked-label">Reveal later</span>`}</div></div>
-      </div>
-    </article>`;
-  }
-
-  function renderGames() {
-    const target = $("#gameGrid");
-    if (!target) return;
-    const filters = $("#gameFilters");
-    const search = $("#gameSearch");
-    const categories = ["All", ...new Set(games.flatMap(game => game.genres || []))];
-
-    if (filters) filters.innerHTML = categories.map((category, i) => `<button class="filter-button ${i === 0 ? "active" : ""}" data-filter="${escapeHtml(category)}">${escapeHtml(category)}</button>`).join("");
-
-    const apply = () => {
-      const active = $(".filter-button.active", filters)?.dataset.filter || "All";
-      const query = (search?.value || "").trim().toLowerCase();
-      const filtered = games.filter(game => {
-        const categoryMatch = active === "All" || (game.genres || []).includes(active);
-        const haystack = [game.title, game.tagline, game.description, ...(game.genres || [])].join(" ").toLowerCase();
-        return categoryMatch && (!query || haystack.includes(query));
-      });
-      target.innerHTML = filtered.length ? filtered.map(gameCard).join("") : `<div class="empty-state"><strong>No games found.</strong><span>Try another filter or search.</span></div>`;
-    };
-
-    filters?.addEventListener("click", e => {
-      const button = e.target.closest("[data-filter]");
-      if (!button) return;
-      $$(".filter-button", filters).forEach(x => x.classList.remove("active"));
-      button.classList.add("active");
-      apply();
-    });
-    search?.addEventListener("input", apply);
-    apply();
-  }
-
-  function updateCard(item) {
-    return `<article class="news-card"><div class="news-meta"><span>${escapeHtml(item.date)}</span><span>${escapeHtml(item.game)}</span><span>${escapeHtml(item.type)}</span></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.excerpt)}</p><a class="text-link" href="${escapeHtml(item.url)}">Read update →</a></article>`;
-  }
-
-  function renderUpdates() {
-    $$('[data-updates]').forEach(target => {
-      const limit = Number(target.dataset.limit || updates.length);
-      target.innerHTML = updates.slice(0, limit).map(updateCard).join("");
-    });
-  }
-
-  function renderRoadmap() {
-    const target = $("#roadmapList");
-    if (!target) return;
-    target.innerHTML = roadmap.map(item => `<article class="roadmap-item ${escapeHtml(item.status)}"><div class="roadmap-number">${escapeHtml(item.phase)}</div><div><div class="roadmap-top"><h3>${escapeHtml(item.title)}</h3><span>${escapeHtml(item.status)}</span></div><p>${escapeHtml(item.text)}</p></div></article>`).join("");
-  }
-
-  function activeNav() {
-    const current = document.body.dataset.page;
-    if (!current) return;
-    $$(`[data-nav]`).forEach(link => link.classList.toggle("active", link.dataset.nav === current));
-  }
-
-  const year = $("#year");
-  if (year) year.textContent = new Date().getFullYear();
-  setupStars();
-  setupNav();
-  setupExternalLinks();
-  renderGames();
-  renderUpdates();
-  renderRoadmap();
-  activeNav();
+  document.addEventListener('click',e=>{const n=e.target.closest('[data-achievement-nav]');if(n)unlock(n.dataset.achievementNav)});
+  const y=$('#year');if(y)y.textContent=new Date().getFullYear();
+  setupStars();setupNav();setupDiscord();activeNav();trackPage();renderGames();renderUpdates();renderRoadmap();bindPlay();renderDashboard();setupProfileForm();
 })();

@@ -1,48 +1,35 @@
-# Starfall Arcade
+# Starfall Arcade — Version 1 Full Website Update
 
-**A universe of browser games.**
+This is the full Version 1 Starfall Arcade hub update. **Keep the public version at Version 1 unless an explicit version change is decided later.**
 
-This repository contains the Starfall Arcade GitHub Pages website.
-
-## Current site features
-
-- Original Starfall Arcade logo and social sharing artwork
-- Featured Stable Empire V2 release
-- Full Stable Empire game page and scene gallery
-- Searchable/filterable game library
-- Development updates with individual news pages
+## Major features
+- Premium Stable Empire Version 1 cover and release page
+- Searchable game library
+- Browser-local player profiles
+- Browser-local achievements and arcade points
+- Continue Playing / recent launch tracking
+- Recent local hub activity
+- Updates/news system
 - Public roadmap
-- Community / Discord planning page
+- Community hub prepared for Discord
+- Future leaderboards page with no fake rankings
 - Supporter-program planning page
-- About page
-- Responsive mobile navigation
-- 404 page
-- Open Graph/social metadata
-- `robots.txt`, `sitemap.xml`, `.nojekyll`
-- Reduced-motion accessibility support
+- SEO/social sharing metadata
+- sitemap, robots.txt, manifest, custom 404
+- Mobile navigation and accessibility improvements
 
-## Add the Discord invite
+## Important profile limitation
+The Version 1 player profile is **local to the current browser/device**. It is not authentication and does not sync online. Real accounts require a backend and are listed on the roadmap.
 
-Open `site-config.js` and set:
+## Stable Empire save safety
+The Starfall Arcade hub does not read or modify Stable Empire save data. It only stores local hub activity such as the last game link launched.
 
+## Discord
+Edit `site-config.js` and set:
 ```js
-discord: "https://discord.gg/YOURINVITE"
+discord: "https://discord.gg/YOUR-INVITE"
 ```
+All Discord buttons then point to the same invite.
 
-Every Discord button will update automatically.
-
-## Add another game
-
-Add a new game object to the `games` array in `site-config.js`. Use a dedicated page when the game is ready for a real reveal.
-
-## Live URLs
-
-Starfall Arcade:
-`https://itzreynolds.github.io/starfall-arcade/`
-
-Stable Empire:
-`https://itzreynolds.github.io/stable-empire/`
-
-## Uploading this update
-
-Upload the **contents** of this folder to the root of `Itzreynolds/starfall-arcade` and replace the older website files when GitHub asks.
+## Upload to GitHub
+Upload the contents of this folder to the root of `Itzreynolds/starfall-arcade`, replacing older site files when GitHub prompts. Commit directly to `main`. GitHub Pages should redeploy automatically.
