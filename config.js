@@ -5,11 +5,11 @@ export const STARFALL_CONFIG = {
   discordUrl: "",
   supportEmail: "",
 
-  // REQUIRED FOR LIVE ACCOUNTS:
-  // Create a Supabase project, then paste the Project URL and public anon key here.
-  // Never put your service-role key, Stripe secret key, or Resend API key in this file.
-  supabaseUrl: "YOUR_SUPABASE_URL",
-  supabaseAnonKey: "YOUR_SUPABASE_ANON_KEY",
+  // LIVE SUPABASE CONNECTION
+  // Safe for browser use: Project URL + publishable key only.
+  // Never put service-role keys, Stripe secrets, or Resend API keys in this file.
+  supabaseUrl: "https://ythdsmdsdfydxoupdywj.supabase.co",
+  supabaseAnonKey: "sb_publishable_QhU7Pw5KTDcYUlzAtSCbJA_aKMhbnvI",
 
   games: [
     {
