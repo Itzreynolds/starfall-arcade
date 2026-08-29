@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Starfall Control Center</title><link rel="stylesheet" href="../assets/css/styles.css"></head>
+<body class="staff-body">
+<header class="staff-header"><div><strong>★ Starfall Control Center</strong><small>Owner & Staff Administration • Version 1</small></div><div><span class="pill" data-staff-role>Checking access…</span> <a class="button small secondary" href="../index.html">Public Site</a></div></header>
+<main>
+<div class="notice warning setup-banner" data-staff-no-backend hidden><strong>Control Center offline.</strong> Supabase must be connected first. Follow <code>docs/SETUP.md</code>.</div>
+<div class="notice error setup-banner" data-staff-denied hidden><strong>Access denied.</strong> This account is not an active Starfall staff account or does not have permission to use the Control Center.</div>
+<div class="staff-layout" data-staff-app hidden>
+  <aside class="staff-nav">
+    <button class="active" data-staff-tab="overview">Overview</button>
+    <button data-staff-tab="users">Users</button>
+    <button data-staff-tab="announcements">Announcements</button>
+    <button data-staff-tab="store">Store & Premium</button>
+    <button data-staff-tab="games">Games</button>
+    <button data-staff-tab="staff">Staff</button>
+    <button data-staff-tab="audit">Audit Log</button>
+  </aside>
+  <section>
+    <div class="staff-pane" data-staff-pane="overview">
+      <div class="eyebrow">PLATFORM OVERVIEW</div><h1>Starfall at a glance.</h1><p class="lead">Live account, activity, commerce, and engagement totals pulled from the backend.</p>
+      <div class="staff-stats">
+        <div class="stat-card"><strong id="usersTotal">0</strong><small>Total users</small></div>
+        <div class="stat-card"><strong id="users24h">0</strong><small>New users • 24h</small></div>
+        <div class="stat-card"><strong id="active7d">0</strong><small>Active users • 7d</small></div>
+        <div class="stat-card"><strong id="premiumActive">0</strong><small>Active premium</small></div>
+        <div class="stat-card"><strong id="purchases30d">0</strong><small>Purchases • 30d</small></div>
+        <div class="stat-card"><strong id="events24h">0</strong><small>Game events • 24h</small></div>
+        <div class="stat-card"><strong id="unreadInbox">0</strong><small>Unread inbox items</small></div>
+        <div class="stat-card"><strong id="cloudSaves">0</strong><small>Cloud save slots</small></div>
+        <div class="stat-card"><strong id="achievementsUnlocked">0</strong><small>Achievements unlocked</small></div>
+        <div class="stat-card"><strong id="staffCount">0</strong><small>Active staff</small></div>
+      </div>
+      <div class="chart-card"><div class="eyebrow">REGISTRATIONS • LAST 7 DAYS</div><div class="mini-bars" data-registration-bars></div></div>
+    </div>
+
+    <div class="staff-pane" data-staff-pane="users" hidden>
+      <div class="eyebrow">USER MANAGEMENT</div><h1>Accounts & player history.</h1><p class="lead">Search by handle, display name, user ID, or email hint. Sensitive actions are permission-checked server-side and written to the audit log.</p>
+      <form class="user-search" id="userSearchForm"><input name="q" placeholder="Search users…" autocomplete="off"><button class="button primary" type="submit">Search</button></form>
+      <div class="user-results" data-user-results></div>
+      <section class="user-detail" data-user-detail hidden>
+        <div class="profile-strip"><div class="avatar mini">★</div><div><h2 data-detail-name>User</h2><small data-detail-id></small></div></div>
+        <div class="detail-grid">
+          <div><small>Handle</small><strong data-detail-handle></strong></div><div><small>Status</small><strong data-detail-status></strong></div>
+          <div><small>Arcade XP</small><strong data-detail-xp></strong></div><div><small>Premium</small><strong data-detail-premium></strong></div>
+          <div><small>Created</small><strong data-detail-created></strong></div><div><small>Last seen</small><strong data-detail-lastseen></strong></div>
+          <div><small>Staff Role</small><strong data-detail-staff></strong></div><div><small>Account Data</small><strong data-detail-counts></strong></div>
+        </div>
+        <div class="admin-actions">
+          <form id="moderationForm" class="form-grid"><strong>Moderation</strong><label>Status<select name="status"><option value="active">Active</option><option value="suspended">Suspended</option><option value="banned">Banned</option></select></label><label>Until (optional)<input type="datetime-local" name="until"></label><label>Reason<textarea name="reason" required></textarea></label><button class="button primary" type="submit">Apply Status</button></form>
+          <form id="entitlementForm" class="form-grid"><strong>Grant Entitlement</strong><label>Entitlement key<input name="entitlement" placeholder="stable-empire.expansion.example" required></label><label>Expires (optional)<input type="datetime-local" name="expires"></label><label>Reason<textarea name="reason" required></textarea></label><button class="button primary" type="submit">Grant</button></form>
+          <form id="staffRoleForm" class="form-grid"><strong>Staff Role</strong><label>Role<select name="role"><option value="none">Remove staff</option><option value="support">Support</option><option value="staff">Staff</option><option value="developer">Developer</option><option value="senior_staff">Senior Staff</option><option value="admin">Administrator</option><option value="owner">Owner</option></select></label><p style="color:var(--muted);font-size:.78rem">Owner/admin elevation is restricted server-side.</p><button class="button primary" type="submit">Update Role</button></form>
+        </div>
+        <div class="chart-card"><strong>Recent Activity JSON</strong><pre data-detail-activity></pre></div>
+      </section>
+    </div>
+
+    <div class="staff-pane" data-staff-pane="announcements" hidden>
+      <div class="eyebrow">COMMUNICATIONS</div><h1>Announcements & player mail.</h1><p class="lead">Every announcement creates an internal inbox message. Optional email delivery respects the recipient selection and marketing preference rules.</p>
+      <article class="panel"><form id="announcementForm" class="form-grid">
+        <div class="form-row"><label>Title<input name="title" maxlength="120" required></label><label>Category<select name="category"><option>Platform</option><option>Game Update</option><option>Community</option><option>Premium</option><option>Maintenance</option></select></label></div>
+        <label>Message<textarea name="body" maxlength="5000" required></textarea></label>
+        <div class="form-row"><label>Audience<select name="audience"><option value="all">All users</option><option value="premium">Premium users</option><option value="game">Players of a game</option><option value="inactive30">Inactive 30+ days</option><option value="user">Specific user ID</option></select></label><label>Audience value (when needed)<input name="audience_value" placeholder="stable-empire or user UUID"></label></div>
+        <label class="check"><input type="checkbox" name="send_email"><span>Also send email where eligible and configured.</span></label>
+        <button class="button primary" type="submit">Publish Announcement</button>
+      </form></article>
+    </div>
+
+    <div class="staff-pane" data-staff-pane="store" hidden>
+      <div class="eyebrow">COMMERCE</div><h1>Store & Premium.</h1><p class="lead">Products use Stripe Price IDs and grant Starfall entitlement keys only after verified webhook events.</p>
+      <div class="split">
+        <article class="panel"><div class="eyebrow">CURRENT PRODUCTS</div><div data-product-admin></div></article>
+        <article class="panel"><div class="eyebrow">CREATE / UPDATE PRODUCT</div>
+          <form id="productAdminForm" class="form-grid">
+            <div class="form-row"><label>Product ID<input name="id" placeholder="stable-empire-expansion-1" required></label><label>Name<input name="name" required></label></div>
+            <label>Description<textarea name="description"></textarea></label>
+            <div class="form-row"><label>Type<select name="product_type"><option value="one_time">One-time</option><option value="subscription">Subscription</option></select></label><label>Game ID<input name="game_id" placeholder="Leave blank for platform-wide"></label></div>
+            <div class="form-row"><label>Stripe Price ID<input name="stripe_price_id" placeholder="price_..."></label><label>Display price<input name="price_display" placeholder="$X.XX / month"></label></div>
+            <label>Entitlement keys, comma separated<input name="entitlements" placeholder="starfall.premium, cosmetic.example"></label>
+            <label class="check"><input type="checkbox" name="active"><span>Make this product visible and purchasable. Only enable after Stripe is tested.</span></label>
+            <button class="button primary" type="submit">Save Product</button>
+          </form>
+        </article>
+      </div>
+      <div class="notice warning" style="margin-top:.8rem">Create the product/price in Stripe first. Never put Stripe secret keys in GitHub Pages or this form.</div>
+    </div>
+
+    <div class="staff-pane" data-staff-pane="games" hidden>
+      <div class="eyebrow">GAME REGISTRY</div><h1>Starfall games.</h1><p class="lead">Every title gets a stable game ID that connects saves, activity, achievements, products, and entitlements.</p>
+      <div class="split">
+        <article class="panel"><div class="eyebrow">REGISTERED GAMES</div><div data-game-admin></div></article>
+        <article class="panel"><div class="eyebrow">CREATE / UPDATE GAME</div>
+          <form id="gameAdminForm" class="form-grid">
+            <div class="form-row"><label>Game ID<input name="id" placeholder="stable-empire" required></label><label>Title<input name="title" required></label></div>
+            <div class="form-row"><label>Version label<input name="version" value="Version 1"></label><label>Status<select name="status"><option value="development">Development</option><option value="live">Live</option><option value="maintenance">Maintenance</option><option value="retired">Retired</option></select></label></div>
+            <label>Play URL<input type="url" name="play_url"></label><label>Cover URL<input name="cover_url"></label><label>Description<textarea name="description"></textarea></label>
+            <button class="button primary" type="submit">Save Game</button>
+          </form>
+        </article>
+      </div>
+    </div>
+
+    <div class="staff-pane" data-staff-pane="staff" hidden><div class="eyebrow">STAFF ACCESS</div><h1>Roles & permissions.</h1><p class="lead">The browser never decides whether somebody is an administrator. Backend functions and RLS enforce permissions.</p><div class="table-wrap"><table class="admin-table"><thead><tr><th>User ID</th><th>Role</th><th>Status</th><th>Custom permissions</th><th>Added</th></tr></thead><tbody data-staff-list></tbody></table></div></div>
+
+    <div class="staff-pane" data-staff-pane="audit" hidden><div class="eyebrow">AUDIT TRAIL</div><h1>Who changed what.</h1><p class="lead">Moderation, entitlement grants, staff changes, and administrative actions are recorded here.</p><div class="table-wrap"><table class="admin-table"><thead><tr><th>Time</th><th>Action</th><th>Target</th><th>Actor</th><th>Details</th></tr></thead><tbody data-audit-list></tbody></table></div></div>
+  </section>
+</div>
+</main>
+<script type="module" src="../assets/js/staff.js"></script>
+</body></html>
