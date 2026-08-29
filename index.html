@@ -1,64 +1,35 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080a12">
-  <meta name="description" content="Starfall Arcade — a universe of browser games.">
-  <title>Starfall Arcade</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="star-layer" id="stars"></div>
-  <header class="site-header">
-    <a class="brand" href="#top"><span class="brand-mark">★</span><span><strong>Starfall Arcade</strong><small>A universe of browser games.</small></span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
-    <nav class="main-nav" id="mainNav">
-      <a href="#games">Games</a><a href="#updates">Updates</a><a href="#community">Community</a><a href="#support">Support</a><a href="#about">About</a>
-      <a class="nav-cta disabled" id="discordNav" href="#community">Discord</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero shell">
-      <div class="hero-copy">
-        <div class="eyebrow">WELCOME TO STARFALL ARCADE</div>
-        <h1>Every game is <span>another world.</span></h1>
-        <p>Starfall Arcade is a growing home for original browser games — management, simulation, story-driven worlds, and whatever comes next.</p>
-        <div class="actions"><a class="button primary" href="#games">Explore Games</a><a class="button secondary disabled" href="#community">Join the Community</a></div>
-        <div class="stats"><div><strong>1</strong><small>Released Game</small></div><div><strong>1</strong><small>Playable Now</small></div><div><strong>Free</strong><small>Browser Access</small></div></div>
-      </div>
-
-      <article class="featured-card">
-        <div class="featured-art"><span class="featured-label">FEATURED GAME</span><div class="moon"></div><div class="barn"></div><div class="horse">♞</div></div>
-        <div class="featured-body"><div class="chips"><span class="status live">LIVE</span><span>Simulation</span><span>Management</span></div><h2>Stable Empire</h2><p>Build the stable. Raise the bloodline. Grow the empire.</p><div class="actions"><a class="button primary" href="https://itzreynolds.github.io/stable-empire/" target="_blank" rel="noreferrer">Play Stable Empire</a><a class="text-link" href="#stable">Game details →</a></div></div>
-      </article>
-    </section>
-
-    <section class="section shell" id="games">
-      <div class="section-heading"><div><div class="eyebrow">GAME LIBRARY</div><h2>Choose your next world</h2><p>The library is already structured for future Starfall Arcade releases.</p></div><div class="filters" id="filters"></div></div>
-      <div class="game-grid" id="gameGrid"></div>
-    </section>
-
-    <section class="section shell" id="stable">
-      <div class="split">
-        <article class="panel"><div class="eyebrow">CURRENT FLAGSHIP</div><h2>Stable Empire</h2><p>A browser-based horse stable management game focused on training, breeding, competitions, contracts, estate development, crafting, story content, and long-term progression.</p><div class="tag-cloud"><span>Horse Management</span><span>Breeding</span><span>Crafting</span><span>Story</span><span>County Map</span><span>Competitions</span></div><a class="button primary" href="https://itzreynolds.github.io/stable-empire/" target="_blank" rel="noreferrer">Launch Game</a></article>
-        <article class="panel"><div class="eyebrow">THE BIGGER PLAN</div><h2>One hub. Many games.</h2><div class="roadmap"><div><b>01</b><p><strong>Release games</strong><small>Every title gets a place in the library.</small></p></div><div><b>02</b><p><strong>Build community</strong><small>Discord, feedback, testing, and announcements.</small></p></div><div><b>03</b><p><strong>Grow Starfall Arcade</strong><small>Future memberships, cosmetics, and supporter features.</small></p></div></div></article>
-      </div>
-    </section>
-
-    <section class="section shell" id="updates"><div class="section-heading"><div><div class="eyebrow">DEVELOPMENT LOG</div><h2>Latest updates</h2><p>News from the games and Starfall Arcade itself.</p></div></div><div class="update-grid" id="updateGrid"></div></section>
-
-    <section class="section shell" id="community">
-      <div class="community"><div><div class="eyebrow">COMMUNITY</div><h2>Players should help shape what comes next.</h2><p>Starfall Arcade can use Discord for announcements, bug reports, suggestions, testing, events, screenshots, and development previews.</p><div class="actions"><a class="button primary disabled" href="#community">Discord coming soon</a><a class="button secondary" href="#updates">Read Updates</a></div></div><div class="community-grid"><div><span>💬</span><strong>Game Discussion</strong><small>Strategy, builds, and ideas.</small></div><div><span>🧪</span><strong>Testing & Feedback</strong><small>Help shape upcoming systems.</small></div><div><span>📣</span><strong>Announcements</strong><small>Releases and major updates.</small></div><div><span>🏆</span><strong>Community Events</strong><small>Future challenges and showcases.</small></div></div></div>
-    </section>
-
-    <section class="section shell" id="support"><div class="support-card"><div><div class="eyebrow">SUPPORT STARFALL ARCADE</div><h2>Free games first. Extras later.</h2><p>This section is ready for future supporter memberships, cosmetic perks, early-access builds, profile badges, and ad-free options without turning the games pay-to-win.</p></div><div class="support-status"><span>COMING LATER</span><strong>Supporter Program</strong><small>Nothing is being sold yet.</small></div></div></section>
-
-    <section class="section shell" id="about"><div class="split"><article class="panel"><div class="eyebrow">ABOUT</div><h2>Small games. Big worlds.</h2><p>Starfall Arcade is an independent browser-game hub built to house original management, simulation, story, and experimental projects under one identity.</p></article><article class="panel"><div class="eyebrow">DESIGNED TO SCALE</div><h2>Add the next game without rebuilding the site.</h2><p>The game cards and updates are driven from one configuration file, so future titles can be added quickly while keeping the same design and navigation.</p></article></div></section>
-  </main>
-
-  <footer class="site-footer"><div><strong>Starfall Arcade</strong><span>A universe of browser games.</span></div><div><a href="#games">Games</a><a href="#updates">Updates</a><a href="#community">Community</a><a href="#about">About</a></div><small>© <span id="year"></span> Starfall Arcade. Original game projects and website content.</small></footer>
-  <script src="site-config.js"></script><script src="app.js"></script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070912"><meta name="description" content="Original browser games, development updates, and community projects in one growing arcade."><meta property="og:title" content="Starfall Arcade — A Universe of Browser Games"><meta property="og:description" content="Original browser games, development updates, and community projects in one growing arcade."><meta property="og:type" content="website"><meta property="og:image" content="https://itzreynolds.github.io/starfall-arcade/assets/brand/social-card.png"><meta property="og:url" content="https://itzreynolds.github.io/starfall-arcade/"><meta name="twitter:card" content="summary_large_image"><title>Starfall Arcade — A Universe of Browser Games</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"></head><body data-page="home">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="star-layer" id="stars" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Starfall Arcade home"><img src="assets/brand/logo-mark.svg" alt=""><span><strong>Starfall Arcade</strong><small>A universe of browser games.</small></span></a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+    <a data-nav="games" href="games.html">Games</a>
+    <a data-nav="updates" href="updates.html">Updates</a>
+    <a data-nav="roadmap" href="roadmap.html">Roadmap</a>
+    <a data-nav="community" href="community.html">Community</a>
+    <a data-nav="support" href="support.html">Support</a>
+    <a data-nav="about" href="about.html">About</a>
+    <a class="nav-cta" data-link="discord" href="community.html">Discord</a>
+  </nav>
+</header>
+<main id="main">
+<section class="hero shell">
+  <div><div class="eyebrow">WELCOME TO STARFALL ARCADE</div><h1>Every game is <span class="gradient-text">another world.</span></h1><p class="hero-lead">Starfall Arcade is a growing home for original browser games — a place to play, follow development, discover new projects, and join the community around them.</p><div class="actions"><a class="button primary" href="games.html">Explore Games</a><a class="button secondary" data-link="discord" href="community.html">Join the Community</a></div><div class="hero-stats"><div><strong>1</strong><small>Released Game</small></div><div><strong>V2</strong><small>Flagship Release</small></div><div><strong>Free</strong><small>Browser Access</small></div></div></div>
+  <article class="hero-feature"><div class="hero-feature-art"><img src="assets/stable-empire/cover.png" alt="Stable Empire V2 cover artwork"><span class="hero-badge">FEATURED GAME</span></div><div class="hero-feature-body"><div class="tag-row"><span class="status-pill live">LIVE</span><span>Simulation</span><span>Management</span><span>Western</span></div><h2>Stable Empire</h2><p>Build the stable. Raise the bloodline. Grow the empire.</p><div class="actions"><a class="button primary" href="https://itzreynolds.github.io/stable-empire/" target="_blank" rel="noreferrer">Play Now</a><a class="text-link" href="games/stable-empire.html">View game →</a></div></div></article>
+</section>
+<section class="section shell"><div class="section-heading"><div><div class="eyebrow">GAME LIBRARY</div><h2>Choose your next world</h2><p>Stable Empire is only the beginning. The library is already built to expand as new games are announced.</p></div><a class="text-link" href="games.html">Full library →</a></div><div class="game-grid" id="gameGrid"></div></section>
+<section class="section shell"><div class="horizon"><div class="eyebrow">BEYOND THE HORIZON</div><h2>More worlds are coming.</h2><p>Future Starfall Arcade projects will stay intentionally hidden until they have something worth showing. No fake release dates, no empty promises — just a growing space ready for the next game.</p><div class="locked-row"><div class="locked-mini"><span>✦</span><strong>Project Slot 02</strong><small>Concept reserved. Reveal when ready.</small></div><div class="locked-mini"><span>✦</span><strong>New Genres</strong><small>The arcade is not limited to one kind of game.</small></div><div class="locked-mini"><span>✦</span><strong>Player Testing</strong><small>Future projects can move through community testing before release.</small></div></div></div></section>
+<section class="section shell"><div class="section-heading"><div><div class="eyebrow">WHAT'S NEW</div><h2>Development log</h2><p>Release notes, platform changes, community plans, and previews from across Starfall Arcade.</p></div><a class="text-link" href="updates.html">All updates →</a></div><div class="news-grid" data-updates data-limit="3"></div></section>
+<section class="section shell"><div class="split"><article class="panel"><div class="eyebrow">THE ARCADE</div><h2>One home for every project.</h2><p>Instead of scattering every game across disconnected pages, Starfall Arcade gives them one shared identity, game library, update history, roadmap, and community destination.</p><ul class="feature-list"><li>Fast browser access</li><li>Individual game release pages</li><li>Development news and patch notes</li><li>Community and testing plans</li><li>Built for future supporter options</li></ul></article><article class="panel"><div class="eyebrow">ROADMAP</div><h2>Built to keep growing.</h2><p>The public roadmap separates what is live, what comes next, and what is still only planned.</p><div class="actions"><a class="button secondary" href="roadmap.html">View Roadmap</a></div></article></div></section>
+<section class="section shell"><div class="section-heading"><div><div class="eyebrow">COMMUNITY</div><h2>Players should help shape what comes next.</h2><p>Discord will become the main place for announcements, bug reports, suggestions, testing, screenshots, development previews, and future events.</p></div></div><div class="community-grid"><div class="community-card"><span class="icon">💬</span><strong>Game Discussion</strong><small>Talk strategy, builds, ideas, and experiences across Starfall Arcade games.</small></div><div class="community-card"><span class="icon">🧪</span><strong>Testing & Feedback</strong><small>Help test new systems and report problems before major releases.</small></div><div class="community-card"><span class="icon">📣</span><strong>Announcements</strong><small>Follow releases, patch notes, roadmap changes, and development news.</small></div><div class="community-card"><span class="icon">🏆</span><strong>Community Events</strong><small>Future challenges, showcases, contests, and game-specific events.</small></div></div><div class="actions"><a class="button primary" data-link="discord" href="community.html">Discord coming soon</a><a class="button secondary" href="community.html">Community details</a></div></section>
+<section class="section shell"><div class="support-card"><div><div class="eyebrow">SUPPORT STARFALL ARCADE</div><h2>Support should add more, not take away.</h2><p>The site is prepared for optional supporter features later — cosmetics, recognition, early previews, testing access, or ad-free options — while keeping core gameplay fair.</p><a class="text-link" href="support.html">Read the supporter philosophy →</a></div><div class="support-status"><span>STATUS</span><strong>COMING LATER</strong><small>No payment system is active.</small></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-brand"><img src="assets/brand/logo-mark.svg" alt=""><div><strong>Starfall Arcade</strong><span>A universe of browser games.</span></div></div>
+  <div class="footer-links"><a href="games.html">Games</a><a href="updates.html">Updates</a><a href="roadmap.html">Roadmap</a><a href="community.html">Community</a><a href="about.html">About</a></div>
+  <small>© <span id="year"></span> Starfall Arcade. Original game projects and website content.</small>
+</footer>
+<script src="site-config.js"></script><script src="app.js"></script>
 </body></html>

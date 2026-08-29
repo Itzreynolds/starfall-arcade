@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#91aec0"/>
+      <stop offset="1" stop-color="#ddbc8b"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".06"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <circle cx="780" cy="110" r="55" fill="#d2aa65" opacity=".32"/>
+  <path d="M0 225 Q140 170 280 218 T570 210 T1000 195 V560 H0Z" fill="#806c4b" opacity=".65"/>
+  
+        <rect x="170" y="270" width="660" height="180" fill="#674731"/>
+        <path d="M135 280 L500 145 L865 280 Z" fill="#493226"/>
+        <rect x="420" y="335" width="160" height="115" fill="#29211b"/>
+        <path d="M0 470 Q250 445 500 470 T1000 465" fill="#806c4b"/>
+        <circle cx="250" cy="410" r="22" fill="#25231f"/><circle cx="320" cy="420" r="20" fill="#25231f"/>
+        <circle cx="680" cy="418" r="21" fill="#25231f"/><circle cx="750" cy="405" r="22" fill="#25231f"/>
+  <rect width="1000" height="560" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <rect x="0" y="548" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <text x="42" y="520" fill="#f2eadc" font-family="Georgia,serif" font-size="28" font-weight="700">Cedar Valley Horse Auction</text>
+</svg>

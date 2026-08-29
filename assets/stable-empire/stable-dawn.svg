@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d9fb8"/>
+      <stop offset="1" stop-color="#e3bc81"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".06"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <circle cx="780" cy="110" r="55" fill="#f1d08a" opacity=".32"/>
+  <path d="M0 225 Q140 170 280 218 T570 210 T1000 195 V560 H0Z" fill="#6f8756" opacity=".65"/>
+  
+        <rect x="120" y="280" width="360" height="190" rx="6" fill="#513526"/>
+        <path d="M80 290 L300 145 L520 290 Z" fill="#6b4630"/>
+        <rect x="255" y="335" width="90" height="135" fill="#2b211a"/>
+        <rect x="155" y="330" width="56" height="50" fill="#d8b46c" opacity=".45"/>
+        <path d="M0 470 Q180 430 360 470 T720 470 T1000 470" fill="#6f8756"/>
+  <rect width="1000" height="560" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <rect x="0" y="548" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <text x="42" y="520" fill="#f2eadc" font-family="Georgia,serif" font-size="28" font-weight="700">The Old Stable — Dawn</text>
+</svg>

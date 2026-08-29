@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f8da5"/>
+      <stop offset="1" stop-color="#caa779"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".06"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <circle cx="780" cy="110" r="55" fill="#ceb071" opacity=".32"/>
+  <path d="M0 225 Q140 170 280 218 T570 210 T1000 195 V560 H0Z" fill="#61764f" opacity=".65"/>
+  
+        <rect x="210" y="235" width="510" height="230" fill="#6c5b4b"/>
+        <path d="M165 245 L465 100 L765 245 Z" fill="#463d35"/>
+        <rect x="420" y="320" width="90" height="145" fill="#251f1a"/>
+        <rect x="285" y="300" width="65" height="62" fill="#e1c787" opacity=".5"/>
+        <rect x="585" y="300" width="65" height="62" fill="#e1c787" opacity=".5"/>
+        <path d="M0 470 Q260 430 500 465 T1000 460" fill="#61764f"/>
+  <rect width="1000" height="560" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <rect x="0" y="548" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <text x="42" y="520" fill="#f2eadc" font-family="Georgia,serif" font-size="28" font-weight="700">Riverview Stables</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Stable Empire cover artwork</title><desc id="desc">Original illustrated western stable landscape at sunset with a horse silhouette and barn.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4d426e"/><stop offset=".45" stop-color="#b07468"/><stop offset="1" stop-color="#e7b56f"/></linearGradient>
+  <linearGradient id="land" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4e5140"/><stop offset="1" stop-color="#1f211e"/></linearGradient>
+  <linearGradient id="titleg" x1="300" y1="0" x2="900" y2="0"><stop stop-color="#fff0c4"/><stop offset=".5" stop-color="#f7d68e"/><stop offset="1" stop-color="#e8b55f"/></linearGradient>
+</defs>
+<rect width="1200" height="760" fill="url(#sky)"/>
+<circle cx="922" cy="150" r="73" fill="#ffd98a" opacity=".72"/>
+<path d="M0 405 Q180 305 370 380 T730 355 T1200 325 V760 H0Z" fill="#5f6651" opacity=".82"/>
+<path d="M0 495 Q170 410 340 470 T690 446 T1200 430 V760 H0Z" fill="url(#land)"/>
+<!-- barn -->
+<rect x="142" y="532" width="360" height="170" fill="#4e3024"/>
+<path d="M100 540 322 390 544 540Z" fill="#74492f"/>
+<rect x="289" y="580" width="74" height="122" rx="2" fill="#211b18"/>
+<rect x="182" y="577" width="66" height="54" fill="#d6a75e" opacity=".42"/>
+<path d="M68 622H585M87 651H566" stroke="#cab27a" stroke-width="7" opacity=".72"/>
+<!-- horse silhouette -->
+<g fill="#111412">
+  <ellipse cx="858" cy="602" rx="145" ry="78"/>
+  <path d="M756 584c16-90 49-147 98-169 32-14 60-10 84 12 18 17 25 39 22 65-4 28-20 55-49 81l-68 42Z"/>
+  <ellipse cx="900" cy="438" rx="55" ry="46" transform="rotate(-18 900 438)"/>
+  <path d="M929 399 949 353 966 407Zm-38-5-2-50 31 43Z"/>
+  <path d="M925 456c36 3 70 19 101 50l-21 29c-31-20-65-30-102-31Z"/>
+  <rect x="770" y="640" width="34" height="120" rx="8" transform="rotate(4 770 640)"/>
+  <rect x="842" y="645" width="34" height="115" rx="8" transform="rotate(-2 842 645)"/>
+  <rect x="914" y="640" width="34" height="120" rx="8" transform="rotate(4 914 640)"/>
+  <rect x="980" y="626" width="32" height="134" rx="8" transform="rotate(-8 980 626)"/>
+  <path d="M717 574c-35-18-56-46-64-84 33 18 58 27 76 27-5 19-9 38-12 57Z"/>
+  <path d="M853 416c-18 25-25 58-20 97l-22-8c-7-37 2-72 28-104Z"/>
+</g>
+<text x="600" y="88" text-anchor="middle" fill="#f6ead6" font-family="Georgia,Times New Roman,serif" font-size="26" letter-spacing="7">STARFALL ARCADE PRESENTS</text>
+<text x="600" y="210" text-anchor="middle" fill="url(#titleg)" stroke="#5c3f2d" stroke-width="1" font-family="Georgia,Times New Roman,serif" font-size="100" font-weight="700" letter-spacing="-3">STABLE EMPIRE</text>
+<text x="600" y="264" text-anchor="middle" fill="#fff4dd" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">BUILD • BREED • COMPETE • EXPAND</text>
+<rect x="500" y="305" width="200" height="48" rx="24" fill="#0e1118" opacity=".82" stroke="#f1ca80" stroke-opacity=".6"/>
+<text x="600" y="337" text-anchor="middle" fill="#f6d997" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20" font-weight="800" letter-spacing="3">VERSION 2</text>
+</svg>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://itzreynolds.github.io/starfall-arcade/sitemap.xml

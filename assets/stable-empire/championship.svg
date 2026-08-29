@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#72a7c7"/>
+      <stop offset="1" stop-color="#efca82"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".06"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <circle cx="780" cy="110" r="55" fill="#d7a547" opacity=".32"/>
+  <path d="M0 225 Q140 170 280 218 T570 210 T1000 195 V560 H0Z" fill="#6f8754" opacity=".65"/>
+  
+        <ellipse cx="500" cy="385" rx="345" ry="125" fill="#d0b978" opacity=".52"/>
+        <ellipse cx="500" cy="385" rx="300" ry="94" fill="#6f8754"/>
+        <path d="M115 330 C340 210 660 210 885 330" fill="none" stroke="#d7a547" stroke-width="10"/>
+        <path d="M190 220 L270 140 L350 220" fill="#5b3a29"/>
+        <path d="M650 220 L730 140 L810 220" fill="#5b3a29"/>
+        <rect x="255" y="205" width="490" height="26" fill="#d7a547" opacity=".75"/>
+  <rect width="1000" height="560" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <rect x="0" y="548" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <text x="42" y="520" fill="#f2eadc" font-family="Georgia,serif" font-size="28" font-weight="700">County Championship Grounds</text>
+</svg>

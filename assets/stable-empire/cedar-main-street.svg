@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#88aec4"/>
+      <stop offset="1" stop-color="#dfc18f"/>
+    </linearGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".06"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="560" fill="url(#sky)"/>
+  <circle cx="780" cy="110" r="55" fill="#f0c76d" opacity=".32"/>
+  <path d="M0 225 Q140 170 280 218 T570 210 T1000 195 V560 H0Z" fill="#788a5e" opacity=".65"/>
+  
+        <rect x="90" y="290" width="250" height="160" fill="#6a4a35"/>
+        <rect x="390" y="250" width="230" height="200" fill="#5a4030"/>
+        <rect x="680" y="305" width="210" height="145" fill="#73533a"/>
+        <path d="M60 300 L215 210 L365 300 Z" fill="#473329"/>
+        <path d="M365 260 L505 175 L650 260 Z" fill="#463128"/>
+        <path d="M650 315 L785 235 L920 315 Z" fill="#513527"/>
+        <path d="M0 470 Q300 430 520 460 T1000 465" fill="#788a5e"/>
+  <rect width="1000" height="560" fill="url(#shade)"/>
+  <rect x="0" y="0" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <rect x="0" y="548" width="1000" height="12" fill="#090a08" opacity=".85"/>
+  <text x="42" y="520" fill="#f2eadc" font-family="Georgia,serif" font-size="28" font-weight="700">Cedar Valley — Main Street</text>
+</svg>
